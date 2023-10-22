@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+
 
 module.exports = app;
 
@@ -12,7 +14,7 @@ const PORT = process.env.PORT || 4001;
 
 
 // Add middware for parsing request bodies here:
-
+app.use(bodyParser.json());
 
 // Mount your existing apiRouter below at the '/api' path.
 const apiRouter = require('./server/api');
@@ -21,5 +23,4 @@ const apiRouter = require('./server/api');
 // This conditional is here for testing purposes:
 if (!module.parent) { 
   // Add your code to start the server listening at PORT below:
-
 }
