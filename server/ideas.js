@@ -2,6 +2,7 @@ const ideasRouter = require('express').Router();
 
 module.exports = ideasRouter;
 const dbModule = require('./db');
+const checkMillionDollarIdea = require('./checkMillionDollarIdea');
 
 ideasRouter.get('/:ideaId', (req, res, next) => {
     const idIndex = req.params.id;
@@ -18,12 +19,12 @@ ideasRouter.get('/', (req, res, next) => {
     res.send(dbModule.getAllFromDatabase('ideas'));
 });
 
-ideasRouter.post('/', (req, res, next) => {
+ideasRouter.post('/', checkMillionDollarIdea,(req, res, next) => {
     const newIdea = dbModule.addToDatabase('ideas', req.body);
     res.status(201).send(newIdea);
 });
 
-ideasRouter.put('/:ideaId', (req, res, next) => {
+ideasRouter.put('/:ideaId', checkMillionDollarIdea,(req, res, next) => {
     const ideaUpdate = dbModule.updateInstanceInDatabase('ideas', req.params);
     if(ideaUpdate === null){
         res.status(404).send();
