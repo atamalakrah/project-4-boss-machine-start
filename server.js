@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Mount your existing apiRouter below at the '/api' path.
-const apiRouter = require('./server/api');
+const apiRouter = require('./server/api.js');
 app.use('/api', apiRouter);
 
 // This conditional is here for testing purposes:
