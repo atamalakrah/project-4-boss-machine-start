@@ -13,7 +13,6 @@ ideasRouter.param('id', (req, res, next, id) => {
     else{
         res.status(404).send();
     }
-
 });
 
 ideasRouter.get('/:id', (req, res, next) => {
